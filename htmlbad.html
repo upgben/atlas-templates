@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction Failed</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://www.secure-server-hosting.com/secutran/secureforms/assets/bootstrap/css/bootstrap.css">
+    <script src="https://www.secure-server-hosting.com/secutran/secureforms/assets/jQuery/jquery-3.1.0.js"></script>
+    <script src="https://www.secure-server-hosting.com/secutran/secureforms/assets/bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <center><h4>Transaction Error</h4></center>
+        </div>
+        <div class="panel-body">
+            <div class="alert alert-danger">
+                <p><strong>The transaction failed.</strong></p>
+                <form action="https://www.secure-server-hosting.com/secutran/secuitems.php" method="POST">$posted_fields
+                    <p> Please return to the <input type="submit" name="submit" class="btn btn-danger"
+                                                    value="previous page"> to amend the problems below.</p>
+                </form>
+            </div>
+            <div class="well well-lg">
+                <div class="row">
+                    <div class="col-md-12">
+                        $posted_fields
+                        <p><strong>$tranerrdesc</strong></p>
+                        <p><strong>$tranerrdetail</strong></p>
+                        <p>If you recieved this message during a transaction, it will not have been processed and
+                            payment will not have been taken. Details of the error have been logged by our system.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

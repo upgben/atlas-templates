@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Payment Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://www.secure-server-hosting.com/secutran/secureforms/assets/bootstrap/css/bootstrap.css">
+    <script src="https://www.secure-server-hosting.com/secutran/secureforms/assets/jQuery/jquery-3.1.0.js"></script>
+    <script src="https://www.secure-server-hosting.com/secutran/secureforms/assets/bootstrap/js/bootstrap.js"></script>
+    <style>
+        h1#payment-title {
+            text-align: center;
+        }
+
+        /* List Styling */
+        ul#item-list-label {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-weight: bold;
+        }
+
+        ul#item-list-label li {
+            width: 200px;
+            float: left;
+            display: block;
+            text-align: center;
+        }
+
+        ul#item-list-item {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        ul#item-list-item li {
+            width: 200px;
+            float: left;
+            display: block;
+            text-align: center;
+        }
+
+        ul#item-list-summary {
+            list-style: none;
+        }
+
+        ul#item-list-summary li {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Secure Payment Form</h1>
+    <div class="list-group">
+        <ul id="item-list-label" style="font-weight: bold;">
+            <li>Code:</li>
+            <li>Name:</li>
+            <li>Quantity:</li>
+            <li>Price:</li>
+            <li>Total:</li>
+        </ul>
+        <ul id="item-list-item">
+            <loopstart:shoplst>
+                <li>$itemcode</li>
+                <li>$itemdesc</li>
+                <li>$itemquan</li>
+                <li>$transactioncurrency$itempric</li>
+                <li>$transactioncurrency$itemtota</li>
+                <loopend>
+        </ul>
+        <ul id="item-list-summary">
+            <li><b>Shipping:</b> $transactioncurrency$shippingcharge</li>
+            <li><b>Total (Excluding Tax):</b> $transactioncurrency$products_price</li>
+            <li><b>Tax:</b> $transactioncurrency$transactiontax</li>
+            <li><b>Total:</b> $transactioncurrency$transactionamount</li>
+        </ul>
+    </div>
+    <form action="$formaction" method="post">
+        <input type="hidden" name='shreference' value='$shreference'/>
+        <input type="hidden" name='checkcode' value='$checkcode'/>
+        <input type="hidden" name='secuitems' value='$secuitems'/>
+        <input type="hidden" name='transactioncurrency' value='$transactioncurrency'/>
+        <input type="hidden" name='shippingcharge' value='$shippingcharge'/>
+        <input type="hidden" name='transactiontax' value='$transactiontax'/>
+        <input type="hidden" name='transactionamount' value='$transactionamount'/>
+        <input type="hidden" name='filename' value='$backfile'/>
+        <input type="hidden" name="callbackurl" value="$callbackurl"/>
+        <input type="hidden" name="callbackdata" value="$callbackdata"/>
+        <input type="hidden" name="orderid" value="$orderid"/>
+        <input type="hidden" name="success_url" value="$success_url"/>
+        <div class="form-group">
+            <label for="cardholdersname">Card Holder Name:</label>
+            <input type="text" class="form-control" id="cardholdersname" name="cardholdersname"
+                   placeholder="Card Holders Name"
+                   value="$cardholdersname">
+        </div>
+        <div class="form-group">
+            <label for="cardholdersemail">Card Holder Email:</label>
+            <input type="email" class="form-control" id="cardholdersemail" name="cardholdersemail"
+                   placeholder="Card Holders Email"
+                   value="$cardholdersemail">
+        </div>
+        <div class="form-group">
+            <label for="cardholdertelephonenumber">Card Holder Telephone:</label>
+            <input type="number" class="form-control" id="cardholdertelephonenumber" name="cardholdertelephonenumber"
+                   placeholder="Card Holders Number"
+                   value="$cardholdertelephonenumber">
+        </div>
+        <div class="form-group">
+            <label for="cardholderaddr1">Card Holder Address:</label>
+            <input type="text" class="form-control" id="cardholderaddr1" name="cardholderaddr1"
+                   placeholder="Card Holders Address"
+                   value="$cardholderaddr1">
+        </div>
+        <div class="form-group">
+            <label for="cardholderaddr2">Card Holder Address (Line 2):</label>
+            <input type="text" class="form-control" id="cardholderaddr2" name="cardholderaddr2"
+                   placeholder="Card Holders Address"
+                   value="$cardholderaddr2">
+        </div>
+        <div class="form-group">
+            <label for="cardholdercity">Card Holder City/Town:</label>
+            <input type="text" class="form-control" id="cardholdercity" name="cardholdercity"
+                   placeholder="Card Holders City/Town"
+                   value="$cardholdercity">
+        </div>
+        <div class="form-group">
+            <label for="cardholdercountry">Card Holder City/Town:</label>
+            <input type="text" class="form-control" id="cardholdercountry" name="cardholdercountry"
+                   placeholder="Card Holders Country"
+                   value="$cardholdercountry">
+        </div>
+        <div class="form-group">
+            <label for="cardholderpostcode">Card Holder Postcode:</label>
+            <input type="text" class="form-control" id="cardholderpostcode" name="cardholderpostcode"
+                   placeholder="Card Holders Postcode"
+                   value="$cardholderpostcode">
+        </div>
+        <div class="form-group">
+            <label for="cardtype">Card Type:</label>
+            <select class="form-control" id="cardtype" name="cardtype" placeholder="Debit/Credit Card Type">
+                <option>Visa</option>
+                <option>Mastercard</option>
+                <option>Electron</option>
+                <option>Maestro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" class="form-control" id="cardnumber" name="cardnumber"
+                   placeholder="Debit/Credit Card Number">
+        </div>
+        <div class="form-group">
+            <label for="cv2">Card Security Code:</label>
+            <input type="number" class="form-control" id="cv2" name="cv2" placeholder="Security Code">
+        </div>
+        <div class="form-group">
+            <label for="expiry-date">Start Date:</label>
+            <div name="expiry-date" id="start-date">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <select class="form-control" id="start-month" name="cardstartmonth">
+                            <option>Month</option>
+                            <option value="01">Jan (01)</option>
+                            <option value="02">Feb (02)</option>
+                            <option value="03">Mar (03)</option>
+                            <option value="04">Apr (04)</option>
+                            <option value="05">May (05)</option>
+                            <option value="06">June (06)</option>
+                            <option value="07">July (07)</option>
+                            <option value="08">Aug (08)</option>
+                            <option value="09">Sep (09)</option>
+                            <option value="10">Oct (10)</option>
+                            <option value="11">Nov (11)</option>
+                            <option value="12">Dec (12)</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-3">
+                        <select class="form-control" id="start-year" name="cardstartyear">
+                            <option value="13">2013</option>
+                            <option value="14">2014</option>
+                            <option value="15">2015</option>
+                            <option value="16">2016</option>
+                            <option value="17">2017</option>
+                            <option value="18">2018</option>
+                            <option value="19">2019</option>
+                            <option value="20">2020</option>
+                            <option value="21">2021</option>
+                            <option value="22">2022</option>
+                            <option value="23">2023</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="expiry-date">Expiration Date:</label>
+            <div name="expiry-date" id="expiry-date">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <select class="form-control col-sm-2" id="expiry-month" name="cardexpiremonth">
+                            <option>Month</option>
+                            <option value="01">Jan (01)</option>
+                            <option value="02">Feb (02)</option>
+                            <option value="03">Mar (03)</option>
+                            <option value="04">Apr (04)</option>
+                            <option value="05">May (05)</option>
+                            <option value="06">June (06)</option>
+                            <option value="07">July (07)</option>
+                            <option value="08">Aug (08)</option>
+                            <option value="09">Sep (09)</option>
+                            <option value="10">Oct (10)</option>
+                            <option value="11">Nov (11)</option>
+                            <option value="12">Dec (12)</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-3">
+                        <select class="form-control" id="expiry-year" name="cardexpireyear">
+                            <option value="13">2013</option>
+                            <option value="14">2014</option>
+                            <option value="15">2015</option>
+                            <option value="16">2016</option>
+                            <option value="17">2017</option>
+                            <option value="18">2018</option>
+                            <option value="19">2019</option>
+                            <option value="20">2020</option>
+                            <option value="21">2021</option>
+                            <option value="22">2022</option>
+                            <option value="23">2023</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </form>
+</div>
+<footer class="container-fluid text-center">
+    <p>Powered by UPG PLC</p>
+</footer>
+</body>
+</html>
