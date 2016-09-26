@@ -1,2 +1,2 @@
 # atlas-templates
-ATLAS payment templates.
+Payment templates for the SecureHosting/ATLAS platform.
